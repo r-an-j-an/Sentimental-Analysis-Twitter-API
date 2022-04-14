@@ -13,7 +13,7 @@ api = tweepy.API(auth)
 
 def get_tweets(keyword: str) -> List[str]:
     all_tweets = []
-    for tweet in tweepy.Cursor(api.search_tweets, q=keyword, tweet_mode='extended', lang='en').items(10):
+    for tweet in tweepy.Cursor(api.search_tweets, q=keyword, tweet_mode='extended', lang='en').items(100):
         all_tweets.append(tweet.full_text)
     return all_tweets
 
@@ -57,8 +57,12 @@ if __name__ == "__main__":
     print("\n\n\n\n")
     if(first_score > second_score):
         print("The humanity prefers", first_keyword)
+        api.update_status(
+            status="I just performed a sentimental analysis of 100 tweets using Twitter API and between {} and {} ,and {} is more preferred on Twitter \n {} has a sentimental score of {} \n {} has a sentimental score of {}".format(first_keyword, second_keyword, first_keyword, first_keyword, first_score, second_keyword, second_score))
     if(second_score > first_score):
-        print("The humanity prefers", second_keyword)
+        print("The humanity prefers ", second_keyword)
+        api.update_status(
+            status="I just performed a sentimental analysis of 100 tweets using Twitter API and between {} and {} ,and {} is more preferred on Twitter \n {} has a sentimental score of {} \n {} has a sentimental score of {}".format(first_keyword, second_keyword, second_keyword, first_keyword, first_score, second_keyword, second_score))
 
     print("------------------------------------------------------------------------------------------------------")
     print("\n")
