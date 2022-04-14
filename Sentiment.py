@@ -5,10 +5,8 @@ import statistics
 from typing import List
 
 
-auth = tweepy.OAuthHandler('oTqXn5nxuT5CDhxk0Lts3qIjH',
-                           'r8yCyZKDqOZxWNZ2CNwXFimck6OFFJRhxrkJEXBBdIAJ3ZVVCo')
-auth.set_access_token('1449702141069709314-Ukskn3ZYQhUOdKYkd12UNEWLbwAS5v',
-                      'aGxJhaIwzYrsYoW6KqgP1TeKfLQQofbAZwEfYmIg0Vc8T')
+auth = tweepy.OAuthHandler('api_key','api_key_secret')
+auth.set_access_token('access_key','access_key_secret')
 
 api = tweepy.API(auth)
 
